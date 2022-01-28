@@ -73,6 +73,7 @@ module.exports = {
    * @returns {string} The contents of the certificate
    */
   getSerializedCertificate: (certPath) => {
+    debugger
     const cert = fs.readFileSync(path.join(__dirname, certPath));
     // Remove the markers from the string, leaving just the certificate
     return cert
@@ -88,6 +89,7 @@ module.exports = {
   decryptSymmetricKey: (encodedKey, keyPath) => {
     const asymmetricKey = getPrivateKey(keyPath);
     const encryptedKey = Buffer.from(encodedKey, 'base64');
+    debugger
     const decryptedSymmetricKey = crypto.privateDecrypt(
       asymmetricKey,
       encryptedKey

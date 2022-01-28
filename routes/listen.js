@@ -23,7 +23,7 @@ router.post('/', async function (req, res) {
     return;
   }
 
-  console.log(JSON.stringify(req.body, null, 2));
+  //console.log(JSON.stringify(req.body, null, 2));
 
   // Check for validation tokens, validate them if present
   let areTokensValid = true;
@@ -73,11 +73,14 @@ router.post('/', async function (req, res) {
  */
 function processEncryptedNotification(notification) {
   // Decrypt the symmetric key sent by Microsoft Graph
-  const symmetricKey = certHelper.decryptSymmetricKey(
-    notification.encryptedContent.dataKey,
-    process.env.PRIVATE_KEY_PATH
-  );
 
+const symmetricKey = certHelper.decryptSymmetricKey(
+  notification.encryptedContent.dataKey,
+  process.env.PRIVATE_KEY_PATH
+);
+console.log('Symmetric Key is:', symmetricKey)
+
+debugger
   // Validate the signature on the encrypted content
   const isSignatureValid = certHelper.verifySignature(
     notification.encryptedContent.dataSignature,

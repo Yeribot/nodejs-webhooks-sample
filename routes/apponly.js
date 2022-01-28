@@ -11,11 +11,11 @@ router.get('/subscribe', async function (req, res) {
   const client = graph.getGraphClientForApp(req.app.locals.msalClient);
 
   // Ensure a certificate exists
-  await certHelper.createSelfSignedCertificateIfNotExists(
-    process.env.CERTIFICATE_PATH,
-    process.env.PRIVATE_KEY_PATH,
-    process.env.PRIVATE_KEY_PASSWORD
-  );
+  // await certHelper.createSelfSignedCertificateIfNotExists(
+  //   process.env.CERTIFICATE_PATH,
+  //   process.env.PRIVATE_KEY_PATH,
+  //   process.env.PRIVATE_KEY_PASSWORD
+  // );
 
   // If in production, use the current host to receive notifications
   // In development, must use an ngrok proxy
